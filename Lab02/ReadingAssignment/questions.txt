@@ -1,5 +1,0 @@
-Yes, it's overloading constructor in JAVA
- - Constructor overloading is a technique that in a class, it can have 
-many construtors that differ in parameter list.
- -  The compiler distinguishes these constructors by taking into account
-the number of parameters and their type.
