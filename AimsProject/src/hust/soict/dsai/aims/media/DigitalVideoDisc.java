@@ -1,75 +1,57 @@
-package hust.soict.dsai.aims.disc;
-public class DigitalVideoDisc {
-	private int id;
-	private String title;
-	private String category;
+package hust.soict.dsai.aims.media;
+public class DigitalVideoDisc extends Disc {
 	private String director;
 	private int length;
-	private float cost;
+	private int id;
 	private static int nbDigitalVideoDiscs = 0;
 	public DigitalVideoDisc(String title) {
+		super(title);
 		nbDigitalVideoDiscs +=1;
 		this.id = nbDigitalVideoDiscs;
-		this.title = title;
-	}
-	public DigitalVideoDisc( String title,String category, float cost) {
-		nbDigitalVideoDiscs +=1;
-		this.id = nbDigitalVideoDiscs;
-		this.category = category;
-		this.title = title;
-		this.cost = cost;
-	}
-	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
-		nbDigitalVideoDiscs +=1;
-		this.id = nbDigitalVideoDiscs;
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.cost = cost;
-	}
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		nbDigitalVideoDiscs +=1;
-		this.id = nbDigitalVideoDiscs;
-		this.title = title;
-		this.category = category;
-		this.director = director;
-		this.length = length;
-		this.cost = cost;
 		
 	}
+	public DigitalVideoDisc(String title,String category, float cost) {
+		super(title,category,cost);
+		nbDigitalVideoDiscs +=1;
+		this.id = nbDigitalVideoDiscs;
 
-	
-	public String getTitle() {
-		return title;
+	}
+	public DigitalVideoDisc(String title, String category, String director, float cost) {
+		super(title,category,cost);
+		nbDigitalVideoDiscs +=1;
+		this.id = nbDigitalVideoDiscs;
+		this.director = director;
+		
+	}
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+		super(title,category,cost);
+		nbDigitalVideoDiscs +=1;
+		this.id = nbDigitalVideoDiscs;
+		this.director = director;
+		this.length = length;
+
+		
 	}
 	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	public String getCategory() {
-		return category;
+		super.setTitle(title);
 	}
 	public String getDirector() {
 		return director;
 	}
-	public int getLength() {
-		return length;
-	}
-	public float getCost() {
-		return cost;
-	}
+
+
 	public int getID() {
 		return id;
 	}
 	public void getDetail() {
-		System.out.printf("DVD -  %s - %s - %s - %d: %f $\n",title,
-				category,director,length,cost);
+		System.out.printf("DVD -  %s - %s - %s - %d: %f $\n",super.getTitle(),
+				super.getCategory(),director,length,super.getCost());
 	}
 	
 	public boolean search(String title) {
-        return this.title.contains(title);
+        return super.getTitle().contains(title);
     }
+		
 	
 }
 
