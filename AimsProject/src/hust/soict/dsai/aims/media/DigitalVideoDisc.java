@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
-public class DigitalVideoDisc extends Disc {
-	private String director;
-	private int length;
+
+
+public class DigitalVideoDisc extends Disc implements Playable {
 	private int id;
 	private static int nbDigitalVideoDiscs = 0;
 	public DigitalVideoDisc(String title) {
@@ -17,41 +17,33 @@ public class DigitalVideoDisc extends Disc {
 
 	}
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super(title,category,cost);
+		super(title,category,director,cost);
 		nbDigitalVideoDiscs +=1;
 		this.id = nbDigitalVideoDiscs;
-		this.director = director;
-		
+
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super(title,category,cost);
+		super(title,category,director,length,cost);
 		nbDigitalVideoDiscs +=1;
 		this.id = nbDigitalVideoDiscs;
-		this.director = director;
-		this.length = length;
-
-		
 	}
-	public void setTitle(String title) {
-		super.setTitle(title);
-	}
-	public String getDirector() {
-		return director;
-	}
-
-
+	
 	public int getID() {
 		return id;
 	}
+
 	public void getDetail() {
 		System.out.printf("DVD -  %s - %s - %s - %d: %f $\n",super.getTitle(),
-				super.getCategory(),director,length,super.getCost());
+				super.getCategory(),super.getDirector(),super.getLength(),super.getCost());
 	}
-	
 	public boolean search(String title) {
         return super.getTitle().contains(title);
     }
-		
-	
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
+	}
 }
 

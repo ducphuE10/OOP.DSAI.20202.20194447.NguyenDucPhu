@@ -11,10 +11,7 @@ public class StoreTest {
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("black clover");
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("One piece","anime",1.8f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("alo 123","kobiet","kobiet",0.0f);
-		store.addDVD(dvd1);
-		store.addDVD(dvd2,dvd3);
-		store.removeDVD(dvd3);
-		store.removeDVD(dvd3);
+		
 	}
 
 }
