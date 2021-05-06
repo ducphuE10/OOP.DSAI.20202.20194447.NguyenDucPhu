@@ -1,66 +1,54 @@
 package hust.soict.dsai.aims.store;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
+import java.util.ArrayList;
 public class Store {
-	private DigitalVideoDisc[] itemsInStore = new DigitalVideoDisc[1000];
-	public void addDVD(DigitalVideoDisc dvd) {
-		for (int i = 0;i< itemsInStore.length;i++) {
-			if (itemsInStore[i] == null) {
-				itemsInStore[i] = dvd;
-				System.out.println("The disc has been added");
-				break;
-			}
-		}
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	
+	public void addMedia(Media media) {
+		itemsInStore.add(media);
+		System.out.println("The media has been added");
 	}
-	public void addDVD(DigitalVideoDisc...dvds){
-		int k = 0;
-		for (int i = 0;i< itemsInStore.length;i++) {
-			if (itemsInStore[i] == null){
-				itemsInStore[i] = dvds[k];
-				System.out.println("The disc has been added");
-		
-				if (k == (dvds.length-1)){
-					
-					break;
-				}
-				k++;
-				}
-			}
+	public void addMedia(Media...medium){
+		for (int i = 0; i < medium.length;i++) {
+			itemsInStore.add(medium[i]);
+		}
+		System.out.println("The medium has been added");
 		}
 
-	public void removeDVD(DigitalVideoDisc disc) {
-		int numOfDvd = 0;
-		boolean check = true;
-		
-		DigitalVideoDisc copy[] = new DigitalVideoDisc[100];
+	public void  removeMedia(Media media) {
+		if (itemsInStore.size() == 0) {
+			System.out.println("No item in Store");
+		}
+		else {
+			boolean check = true;
+			ArrayList<Media> copy = new ArrayList<Media>();
 			
-		for (int i = 0;i<itemsInStore.length;i++) {
-			if (itemsInStore[i] != null) {
-				numOfDvd+=1;
-			}
-		}
-		if (numOfDvd == 0) {
-			System.out.println("No disc in store"); //check null
-			return;
-		}
-		
-		for (int i = 0; i<itemsInStore.length;i++) {
-			if (itemsInStore[i] == disc) {
-				check = false;
-				itemsInStore[i] = null;
-				numOfDvd -=1;
-				for (int j = 0,k=0;j<copy.length;j++) {
-					if (itemsInStore[j] != null) {
-						copy[k++] = itemsInStore[j];
+			for (int i = 0; i<itemsInStore.size();i++) {
+				if (itemsInStore.get(i).getID() == media.getID() && itemsInStore.get(i).getTitle().equals(media.getTitle())) {
+					System.out.println(media.getTitle());
+					check = false;
+					itemsInStore.set(i,null);
+					for (int j = 0;j<itemsInStore.size();j++) {
+						if (itemsInStore.get(j) != null) {
+							copy.add(itemsInStore.get(j));
+						}
 					}
+					
+					itemsInStore = new ArrayList<Media>();
+					for (int m = 0; m < copy.size();m++) {
+						itemsInStore.add(copy.get(m));
+					}
+					System.out.println("The media has been removed");
+					break;
+					}
+				
 				}
-				itemsInStore = copy;
-				System.out.println("The disc has been removed");
-				break;
-				}
+			
+			if (check == true) {
+				System.out.println("The media is not in store");
 			}
-		if (check == true) {
-			System.out.println("The disc is not in cart");
 		}
 	}
 }

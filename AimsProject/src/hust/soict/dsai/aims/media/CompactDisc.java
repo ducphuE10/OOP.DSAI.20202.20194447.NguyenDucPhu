@@ -1,22 +1,10 @@
 package hust.soict.dsai.aims.media;
-
+import hust.soict.dsai.aims.media.Track;
 import java.util.ArrayList;
 
-class Track{
-	private String title;
-	private int length;
-	public Track(String title) {
-		this.title = title;
-	}
-	public String getTitle(){
-		return title;
-	}
-	public int getLength() {
-		return length;
-	}
-}
 
-public class CompactDisc extends Disc {
+
+public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
@@ -47,12 +35,26 @@ public class CompactDisc extends Disc {
 		if (check =false) tracks.remove(t);
 		else System.out.println("not exits");
 	}
+	
 	public int getLength() {
 		int sum = 0;
 		for (int i = 0; i < tracks.size();i++) {
 			sum += tracks.get(i).getLength();
 		}
 		return sum;
+	}
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < tracks.size();i++) {
+			tracks.get(i).play();
+		}
+	}
+
+	public void getDetail() {
+		System.out.printf("CD - "+super.getTitle() +" - "+super.getCategory() + " - "+ artist + " - "+ super.getDirector()
+		+" - "+ getLength()+ " - " + super.getCost());
 	}
 	
 }

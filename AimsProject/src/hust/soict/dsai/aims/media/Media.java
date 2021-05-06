@@ -16,6 +16,9 @@ public class Media {
 		this.title = title;
 		this.cost = cost;
 	}
+	public int getID() {
+		return id;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -28,4 +31,11 @@ public class Media {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public void getDetail() {
+		
+	}
+
+	public boolean search(String title) {
+        return this.title.contains(title);
+    }
 }

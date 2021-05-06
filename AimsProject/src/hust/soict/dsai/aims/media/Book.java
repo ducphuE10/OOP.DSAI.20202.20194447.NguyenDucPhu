@@ -24,4 +24,7 @@ public class Book extends Media {
 		if (this.authors.contains(authorName) == true) this.authors.remove(authorName);
 		else System.out.println("not exists");
 	}
+	public void getDetail() {
+		System.out.println("Book - "+super.getTitle() +" - "+super.getCategory() + " - "+ authors);
+	}
 }
