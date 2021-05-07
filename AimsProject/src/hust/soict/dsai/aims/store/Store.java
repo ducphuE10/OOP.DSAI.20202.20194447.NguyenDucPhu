@@ -1,10 +1,10 @@
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
-import hust.soict.dsai.aims.media.Media;
-
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import hust.soict.dsai.aims.media.Media;
 public class Store {
-	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	private static ArrayList<Media> itemsInStore = new ArrayList<Media>();
 	
 	public void addMedia(Media media) {
 		itemsInStore.add(media);
@@ -49,6 +49,40 @@ public class Store {
 			if (check == true) {
 				System.out.println("The media is not in store");
 			}
+		}
+	}
+	
+	public ArrayList<Media> getItems(){
+		return itemsInStore;
+	}
+	
+	public void seeStore() {
+		for (Media item: itemsInStore) {
+			System.out.println(item.toString());
+		}
+	}
+	public void searchInStore(int id) {
+		boolean check1 = false;
+		for (Media item:itemsInStore) {
+			if (id == item.getID()){
+				check1 = true;
+				System.out.println(item.toString());		
+				}
+		}
+		if (check1 == false) {
+			System.out.println("The input ID DOES NOT MATCH any items in store");
+		}
+	}
+	public void searchInStore(String Title) {
+		boolean check2 = false;
+		for (Media item: itemsInStore) {
+			if (Title.toLowerCase().equals(item.getTitle().toLowerCase())){
+				check2 = true;
+				System.out.println(item.toString());
+			}
+		}
+		if (check2 == false) {
+			System.out.println("The input title DOES NOT MATCH any items in store");
 		}
 	}
 }

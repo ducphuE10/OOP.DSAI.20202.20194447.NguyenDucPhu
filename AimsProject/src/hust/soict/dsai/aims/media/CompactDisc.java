@@ -11,7 +11,10 @@ public class CompactDisc extends Disc implements Playable {
 	public CompactDisc(String title) {
 		super(title);
 	}
-	
+	public CompactDisc(String title,String category,String director,float cost,String artist) {
+		super(title,category,director,cost);
+		this.artist = artist;
+	}
 	public void addTrack(Track t) {
 		boolean check = true;
 		for (int i = 0; i < tracks.size();i++) {
@@ -51,10 +54,10 @@ public class CompactDisc extends Disc implements Playable {
 			tracks.get(i).play();
 		}
 	}
-
-	public void getDetail() {
-		System.out.printf("CD - "+super.getTitle() +" - "+super.getCategory() + " - "+ artist + " - "+ super.getDirector()
-		+" - "+ getLength()+ " - " + super.getCost());
+	@Override
+	public String toString() {
+		return "CD - "+super.getID()+" - "+super.getTitle() +" - "+super.getCategory() + " - "+ artist + " - "+ super.getDirector()
+		+" - "+ getLength()+ " : " + super.getCost() +"$";
 	}
 	
 }

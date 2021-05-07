@@ -19,4 +19,14 @@ public class Track implements Playable{
 	public int getLength() {
 		return length;
 	}
+	public boolean equals(Object obj) {
+		if (obj == this ) {
+			return true;
+		}
+		if (!(obj instanceof Track)){
+			return false;
+		}
+		Track t = (Track) obj;
+		return t.getTitle().equals(this.getTitle()) && t.getLength() == this.getLength();
+	}
 }

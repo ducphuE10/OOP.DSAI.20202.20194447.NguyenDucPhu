@@ -1,14 +1,25 @@
 package hust.soict.dsai.aims.cart;
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
-
-import java.util.ArrayList;
+import hust.soict.dsai.aims.media.MediaComparatorByCostTitle;
+import hust.soict.dsai.aims.media.MediaComparatorByTitleCost;
 public class Cart {
 	public static final int MAX_NUMS_ORDERED = 20;
-	private static float cost = 0.0f;
+	private float cost = 0.0f;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	private static int qtyOrdered;
-	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+	public int getSize() {
+		return itemsOrdered.size();
+	}
+	public ArrayList<Media> getOrder(){
+		return itemsOrdered;
+	}
 	public void addMedia(Media media) {
 		if (qtyOrdered == 20) {
 			System.out.println("The cart is almost full");
@@ -19,7 +30,6 @@ public class Cart {
 			qtyOrdered ++;
 		}
 	}
-
 
 	public void addMedia(Media...media) {
 		if (qtyOrdered + media.length >= 21) {
@@ -70,6 +80,7 @@ public class Cart {
 	}
 	
 	public float totalCost() {
+		cost = 0;
 		for (int i = 0; i<itemsOrdered.size();i++) {
 			if (itemsOrdered.get(i) != null)
 				cost += itemsOrdered.get(i).getCost();
@@ -84,7 +95,7 @@ public class Cart {
 			if (itemsOrdered.get(i) != null) {
 				stt++;
 				System.out.print(stt+". ");
-				itemsOrdered.get(i).getDetail();
+				System.out.println(itemsOrdered.get(i).toString());
 			}
 		}
 		System.out.println("Total Cost: "+totalCost());
@@ -96,7 +107,7 @@ public class Cart {
 		for (int i =0;i< itemsOrdered.size();i++) {
 			if (itemsOrdered.get(i).getID() == id) {
 				check = true;
-				itemsOrdered.get(i).getDetail();
+				System.out.println(itemsOrdered.get(i).toString());
 				break;
 			}
 		}
@@ -111,7 +122,7 @@ public class Cart {
 			if(itemsOrdered.get(i) != null) {
 			if (itemsOrdered.get(i).search(title)) {
 				check = true;
-				itemsOrdered.get(i).getDetail();
+				System.out.println(itemsOrdered.get(i).toString());
 				break;
 			}
 		}
@@ -121,4 +132,22 @@ public class Cart {
 		}
 	}
 	
+	public void searchAndPlay(String inputTitle) {
+		boolean check = false;
+		for (Media item: itemsOrdered) {
+			if (inputTitle.toLowerCase().equals(item.getTitle().toLowerCase())){
+				check = true;
+				if (item instanceof DigitalVideoDisc) {
+					((DigitalVideoDisc) item).play();
+				}
+				else if (item instanceof CompactDisc) {
+					((CompactDisc) item).play();
+				}
+				else System.out.println("Can't play book");
+			}
+		}
+		if (check == false) {
+			System.out.println("The enter Title DOES NOT MATCH any items in store");
+		}
+	}
 }
