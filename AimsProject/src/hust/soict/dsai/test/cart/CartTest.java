@@ -16,8 +16,6 @@ public class CartTest {
 		cart.addMedia(dvd4,dvd2,dvd3);
 		cart.removeMedia(dvd1);
 
-		Book b = new Book("chi chi em em","hentai",999);
-		cart.addMedia(b);
 		cart.search(2);
 		cart.search("Aladin");
 		cart.search("naruto");

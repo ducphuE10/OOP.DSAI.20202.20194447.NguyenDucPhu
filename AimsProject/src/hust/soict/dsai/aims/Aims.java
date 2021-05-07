@@ -25,7 +25,7 @@ public class Aims {
 		store.addMedia(dvd3);
 		Book b = new Book("Boku no pico","anime",1000000,Collections.singletonList("Phu,Nguyen"));
 		store.addMedia(b);
-		CompactDisc cd = new CompactDisc("adu", "kaka", "hoho", 123, "ko biet");
+		CompactDisc cd = new CompactDisc("hihi", "kaka", "hoho", 123, "ko biet");
 		store.addMedia(cd);
 		implementCode(store,cart);
 		
@@ -65,7 +65,7 @@ public class Aims {
 					System.out.println("The enter Title DOES NOT MATCH any items in store");
 				}
 				System.out.println("The number of items in your cart: "+cart.getSize());
-				continueOrExist(store,cart);
+				
 				break;
 			case 3:
 				store.seeStore();
@@ -87,17 +87,16 @@ public class Aims {
 				if (check == false) {
 					System.out.println("The enter Title DOES NOT MATCH any items in store");
 				}
-				continueOrExist(store,cart);
 				break;
 			case 4:
 				cart.print();
-				continueOrExist(store,cart);
+				
 				break;
 			case 0:
 				continueOrExist(store,cart);
 				break;
 			}
-			
+			continueOrExist(store,cart);
 			break;
 		case 2:
 			updateStore();
@@ -124,7 +123,7 @@ public class Aims {
                     String title = sc.nextLine();
                      
 
-                    System.out.println("\nEnter Category: ");
+                    System.out.print("\nEnter Category: ");
                     String category = sc.nextLine();
                      
 
@@ -196,6 +195,7 @@ public class Aims {
 					System.out.println("Invalid option");
 					continueOrExist(store,cart);
 				}
+				
 				break;
 			
 			case 2:
@@ -213,13 +213,18 @@ public class Aims {
 				if (c == false) {
 					System.out.println("The enter Title DOES NOT MATCH any items in store");
 				}
-				continueOrExist(store,cart);
+				
 				break;
 			case 0:
 				continueOrExist(store, cart);
 				break;
 			}
+			continueOrExist(store,cart);
 			break;
+			
+			
+			
+		
 		case 3:
 			cartMenu();
 			int number3 = Integer.valueOf(sc.nextLine());
@@ -251,12 +256,12 @@ public class Aims {
 				}
 				else if (number4 == 0) {
 					continueOrExist(store,cart);
-					
 				}
 				else {
 					System.out.println("Invalid option");
 					continueOrExist(store,cart);
 				}
+				
 				break;
 				
 			case 2:
@@ -286,9 +291,10 @@ public class Aims {
 				 else {
 					 System.out.println("You have not ordered any items yet!");
 				 }
-				 continueOrExist(store,cart);
+				 
 				break;
 			case 3:
+				cart.print();
 				System.out.println("\nPlease enter Title of item that you want remove from cart: ");
 				String input = sc.nextLine();
 				boolean c = false;
@@ -301,42 +307,48 @@ public class Aims {
 				if (c == false) {
 					System.out.println("The enter Title DOES NOT MATCH any items in cart");
 				}
-				continueOrExist(store,cart);
+				
 				break;
 			case 4:
 				cart.print();
 				System.out.println("\nPlease enter Title: ");
 				String inputTitle = sc.nextLine();
 				cart.searchAndPlay(inputTitle);
-				continueOrExist(store,cart);
+				
 				break;
 				
 			case 5:
-				System.out.println("Place order");
+				System.out.println("PLACE ORDER");
 				 if (cart.getSize() > 0) {
                      System.out.println("You need to pay " + cart.totalCost() + "$ to completed");
-                     System.out.print("Do you want to continue? Y/N  =");
-                     String str = sc.nextLine().toUpperCase();
-                     if (str.equals("Y")) {
+                     System.out.println("Do you want to continue? Yes/No");
+                     System.out.println("Enter: Y or N");
+                     String str = sc.nextLine();
+                     if (str.toUpperCase().equals("Y")) {
                          System.out.println("Finished");
                          cart.getOrder().clear();
                          System.out.println("The cart is empty");
                          cart.print();
                      } 
-                     else if (str.equals("N")) {
+                     else if (str.toUpperCase().equals("N")) {
                          System.out.println("Cancel the placing order");
+                     }
+                     else {
+                    	 System.out.println("Invalid option");
                      }
                      break;
                  } 
 				 else {
                      System.out.println("You have not ordered any items yet!");
+                    
                  }
-				 continueOrExist(store,cart);
+				 
 				break;
 			case 0:
 				continueOrExist(store,cart);
 				break;
 			}
+			continueOrExist(store,cart);
 			break;
 		case 0:
 			System.out.println("Finished exit !!!");
@@ -409,7 +421,7 @@ public class Aims {
 		}
 		
 		System.out.println("--------------------------------");
-		System.out.println(" Do you want to add any items to your current cart");
+		System.out.println("Do you want to add any items to your current cart");
 		System.out.println("--------------------------------");
 		System.out.println("1. Yes");
 		System.out.println("0. No");
@@ -436,6 +448,7 @@ public class Aims {
 			System.out.println("invalid option");
 			continueOrExist(store,cart);
 		}
+		
 	}
 	
 	public static void continueOrExist(Store store, Cart cart) {
@@ -449,6 +462,10 @@ public class Aims {
 		}
 		else if (aws == 1) {
 		implementCode(store,cart);
+		}
+		else {
+			System.out.println("Invalid option");
+			continueOrExist(store,cart);
 		}
 	}
 }
