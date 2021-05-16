@@ -52,7 +52,7 @@ public class Store {
 		}
 	}
 	
-	public ArrayList<Media> getItems(){
+	public ArrayList<Media> getItemsInStore(){
 		return itemsInStore;
 	}
 	

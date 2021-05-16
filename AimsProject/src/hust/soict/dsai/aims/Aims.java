@@ -55,7 +55,7 @@ public class Aims {
 				System.out.println("\nPlease enter Title: ");
 				String inputTitle = sc.nextLine();
 				boolean check = false;
-				for (Media item:store.getItems()) {
+				for (Media item:store.getItemsInStore()) {
 					if (inputTitle.toLowerCase().equals(item.getTitle().toLowerCase())){
 						check = true;
 						cart.addMedia(item);
@@ -72,7 +72,7 @@ public class Aims {
 				System.out.println("\nPlease enter Title: ");
 				String inputTitle3 = sc.nextLine();
 				check = false;
-				for (Media item:store.getItems()) {
+				for (Media item:store.getItemsInStore()) {
 					if (inputTitle3.toLowerCase().equals(item.getTitle().toLowerCase())){
 						check = true;
 						if (item instanceof DigitalVideoDisc) {
@@ -204,7 +204,7 @@ public class Aims {
 				System.out.println("\nPlease enter Title of item that you want remove: ");
 				String inputTitle = sc.nextLine();
 				boolean c = false;
-				for (Media item:store.getItems()) {
+				for (Media item:store.getItemsInStore()) {
 					if (inputTitle.toLowerCase().equals(item.getTitle().toLowerCase())){
 						c = true;
 						store.removeMedia(item);
@@ -408,7 +408,7 @@ public class Aims {
 	
 	
 	public static void seeDetail(Store store, Cart cart) {
-		for (Media i: store.getItems()) {
+		for (Media i: store.getItemsInStore()) {
 			System.out.println(i.toString());
 			if (i instanceof DigitalVideoDisc || i instanceof CompactDisc) {
 				System.out.println("Do you want to play? 1(Yes)/0(No) ");
@@ -431,7 +431,7 @@ public class Aims {
 		if (n == 1) {
 			System.out.println("Input ID of media: ");
 			int id = Integer.valueOf(sc.nextLine());
-			for (Media i: store.getItems()) {
+			for (Media i: store.getItemsInStore()) {
 				if (i.getID() == id) {
 					cart.addMedia(i);
 					break;
