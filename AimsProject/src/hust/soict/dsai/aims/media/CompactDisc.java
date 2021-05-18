@@ -53,11 +53,12 @@ public class CompactDisc extends Disc implements Playable {
 	}
 
 	@Override
-	public void play() {
-		// TODO Auto-generated method stub
+	public String play() {
+		String tmp = "";
 		for (int i = 0; i < tracks.size();i++) {
-			tracks.get(i).play();
+			tmp += tracks.get(i).play();
 		}
+		return tmp;
 	}
 	@Override
 	public String toString() {

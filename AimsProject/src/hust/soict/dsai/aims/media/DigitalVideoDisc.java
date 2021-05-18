@@ -30,10 +30,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
         return super.getTitle().contains(title);
     }
 	@Override
-	public void play() {
+	public String play() {
 		// TODO Auto-generated method stub
 		System.out.println("Playing DVD: " + this.getTitle());
 		System.out.println("DVD length: " + this.getLength());
+		return "Playing DVD: " + this.getTitle() + "\n" + "DVD length: " + this.getLength();
 	}
 }
 

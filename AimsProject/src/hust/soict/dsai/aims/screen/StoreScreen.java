@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -18,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import hust.soict.dsai.aims.media.Book;
@@ -26,6 +29,7 @@ import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 
+
 public class StoreScreen extends JFrame {
 	static Store store;
 	
@@ -33,7 +37,7 @@ public class StoreScreen extends JFrame {
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north,BoxLayout.Y_AXIS));
 		north.add(createMenuBar());
-//		north.add(createrHeader());
+		north.add(createHeader());
 		return north;
 	}
 	
@@ -71,6 +75,7 @@ public class StoreScreen extends JFrame {
 		header.add(Box.createRigidArea(new Dimension(10,10)));
 		header.add(title);
 		header.add(Box.createHorizontalGlue());
+		header.add(cart);
 		header.add(Box.createRigidArea(new Dimension(10,10)));
 		
 		return header;
@@ -103,7 +108,9 @@ public class StoreScreen extends JFrame {
 		setSize(1024, 768);
 	}
 	
+
 	public static void main(String[] arg) {
+		store = new Store();
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The lion King","Animation","Roger Allers",87,19.95f);
 		store.addMedia(dvd1);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars","Science Fiction","George Lucas",87,24.95f);
@@ -114,6 +121,14 @@ public class StoreScreen extends JFrame {
 		store.addMedia(b);
 		CompactDisc cd = new CompactDisc("hihi", "kaka", "hoho", 123, "ko biet");
 		store.addMedia(cd);
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("qwe","Animation",18.99f);
+		store.addMedia(dvd4);
+		DigitalVideoDisc dvd5 = new DigitalVideoDisc("das","Animation",18.99f);
+		store.addMedia(dvd5);
+		DigitalVideoDisc dvd6 = new DigitalVideoDisc("davavd","Animation",18.99f);
+		store.addMedia(dvd6);
+		DigitalVideoDisc dvd7 = new DigitalVideoDisc("abc","Animation",18.99f);
+		store.addMedia(dvd7);
 		new StoreScreen(store);
 	}
 }

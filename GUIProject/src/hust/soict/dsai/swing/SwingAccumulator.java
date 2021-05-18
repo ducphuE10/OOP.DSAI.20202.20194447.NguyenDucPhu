@@ -30,7 +30,7 @@ public class SwingAccumulator extends JFrame {
 		tfOutput.setEditable(true);
 		cp.add(tfOutput);
 		
-		setTitle("dit me oop");
+		setTitle("Swing Accumulator");
 		setSize(350,120);
 		setVisible(true);
 	}
