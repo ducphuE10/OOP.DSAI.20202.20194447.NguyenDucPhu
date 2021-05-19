@@ -7,17 +7,19 @@ import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.MediaComparatorByCostTitle;
 import hust.soict.dsai.aims.media.MediaComparatorByTitleCost;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 public class Cart {
 	public static final int MAX_NUMS_ORDERED = 20;
 	private float cost = 0.0f;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	private static int qtyOrdered;
 	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
 	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 	public int getSize() {
 		return itemsOrdered.size();
 	}
-	public ArrayList<Media> getOrder(){
+	public ObservableList<Media> getOrder(){
 		return itemsOrdered;
 	}
 	public void addMedia(Media media) {
@@ -63,7 +65,7 @@ public class Cart {
 						copy.add(itemsOrdered.get(j));
 					}
 				}
-				itemsOrdered = new ArrayList<Media>();
+				itemsOrdered =  FXCollections.observableArrayList();
 				for (int m = 0; m < copy.size();m++) {
 					itemsOrdered.add(copy.get(m));
 				}
