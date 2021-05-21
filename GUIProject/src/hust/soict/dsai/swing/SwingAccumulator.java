@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class SwingAccumulator extends JFrame {
@@ -42,10 +43,15 @@ public class SwingAccumulator extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			try {
 			int numberIn = Integer.valueOf(tfInput.getText());
 			sum+= numberIn;
 			tfInput.setText("");
 			tfOutput.setText(sum+"");
+			}
+			catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }

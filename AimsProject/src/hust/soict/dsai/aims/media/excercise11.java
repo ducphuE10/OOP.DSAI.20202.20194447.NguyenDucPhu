@@ -2,10 +2,13 @@ package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import hust.soict.dsai.aims.exception.NonPositiveException;
+
 import java.util.Collections;
 
 public class excercise11 {
-	public static void main(String[] arg) {
+	public static void main(String[] arg) throws NonPositiveException {
 		List<Media> mediae = new ArrayList<Media>();
 		DigitalVideoDisc dvd = new DigitalVideoDisc("the lion King","Animation","Roger Allers",87,19.95f);
 		CompactDisc cd = new CompactDisc("alo 123");

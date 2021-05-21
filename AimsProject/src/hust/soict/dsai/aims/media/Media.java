@@ -2,6 +2,8 @@ package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
+import hust.soict.dsai.aims.exception.NonPositiveException;
+
 public class Media {
 	private int id;
 	private String title;
@@ -19,12 +21,15 @@ public class Media {
 		this.id = numberOfMedia;
 	}
 
-	public Media( String title,String category, float cost) {
+	public Media( String title,String category, float cost) throws NonPositiveException {
 		this.category = category;
 		this.title = title;
-		this.cost = cost;
 		numberOfMedia+=1;
 		this.id = numberOfMedia;
+		if (cost>0) {
+			this.cost = cost;
+		}
+		else throw new NonPositiveException("Non-Positive cost: "+this.getTitle());
 	}
 	
 	public int getID() {
@@ -50,7 +55,10 @@ public class Media {
         return this.title.contains(title);
     }
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) { //ex15 lab05
+		if (obj == null) {
+			return false;
+		}
 		if (obj == this ) {
 			return true;
 		}

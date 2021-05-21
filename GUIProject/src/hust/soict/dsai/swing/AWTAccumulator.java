@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -42,10 +43,15 @@ public class AWTAccumulator extends Frame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			try {
 			int numberIn = Integer.valueOf(tfInput.getText());
 			sum+= numberIn;
 			tfInput.setText("");
 			tfOutput.setText(sum+"");
+			}
+			catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		
 	}
